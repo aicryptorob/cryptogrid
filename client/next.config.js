@@ -1,6 +1,11 @@
-
 const nextConfig = {
-  reactStrictMode: true,
-}
+	reactStrictMode: true,
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
+
+module.exports = {
+	images: {
+		domains: ["coingecko.com", "assets.coingecko.com"],
+	},
+};

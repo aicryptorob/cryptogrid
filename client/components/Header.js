@@ -6,14 +6,13 @@ import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 const user = {
 	name: "Tom Cook",
 	email: "tom@example.com",
-	imageUrl:
-		"https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+	imageUrl: "",
 };
 const navigation = [
-	{ name: "Dashboard", href: "#", current: true },
-	{ name: "Team", href: "#", current: false },
-	{ name: "Projects", href: "#", current: false },
-	{ name: "Calendar", href: "#", current: false },
+	{ name: "Cryptos", href: "#", current: true },
+	{ name: "The Project", href: "#", current: false },
+	// { name: "Projects", href: "#", current: false },
+	// { name: "Calendar", href: "#", current: false },
 ];
 const userNavigation = [
 	{ name: "Your Profile", href: "#" },
@@ -36,7 +35,7 @@ export default function Header() {
         <body class="h-full">
         ```
       */}
-			<div className='min-h-full'>
+			<div className='min-h-full bg-stone-800'>
 				<Disclosure as='nav' className='bg-white border-b border-gray-200'>
 					{({ open }) => (
 						<>
@@ -85,11 +84,11 @@ export default function Header() {
 											<div>
 												<Menu.Button className='max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>
 													<span className='sr-only'>Open user menu</span>
-													<img
+													{/* <img
 														className='h-8 w-8 rounded-full'
 														src={user.imageUrl}
 														alt=''
-													/>
+													/> */}
 												</Menu.Button>
 											</div>
 											<Transition
@@ -157,11 +156,11 @@ export default function Header() {
 								<div className='pt-4 pb-3 border-t border-gray-200'>
 									<div className='flex items-center px-4'>
 										<div className='flex-shrink-0'>
-											<img
+											{/* <img
 												className='h-10 w-10 rounded-full'
 												src={user.imageUrl}
 												alt=''
-											/>
+											/> */}
 										</div>
 										<div className='ml-3'>
 											<div className='text-base font-medium text-gray-800'>
@@ -173,10 +172,7 @@ export default function Header() {
 										</div>
 										<button
 											type='button'
-											className='ml-auto bg-white flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>
-											<span className='sr-only'>View notifications</span>
-											<BellIcon className='h-6 w-6' aria-hidden='true' />
-										</button>
+											className='ml-auto bg-white flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'></button>
 									</div>
 									<div className='mt-3 space-y-1'>
 										{userNavigation.map((item) => (
@@ -198,19 +194,24 @@ export default function Header() {
 				<div className='py-10'>
 					<header>
 						<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-							<h1 className='text-3xl font-bold leading-tight text-gray-900'>
-								Lastest Crypto Prices
-							</h1>
+							<div className='flex'>
+								<h1 className='text-3xl font-bold leading-tight text-gray-50'>
+									Search Lastest Crypto Prices
+								</h1>
+								<div className=' '>
+									<form>
+										<input
+											className='text-center text-gray-200 bg-slate-600 w-62 h-12 ml-10 cursor-pointer'
+											placeholder='search crypto by symbol'
+										/>
+									</form>
+								</div>
+							</div>
 						</div>
 					</header>
 					<main>
 						<div className='max-w-7xl mx-auto sm:px-6 lg:px-8'>
-							{/* Replace with your content */}
-
-							<div className='px-4 py-8 sm:px-0'>
-								<div className='border-4 border-dashed border-gray-200 rounded-lg h-96' />
-							</div>
-							{/* /End replace */}
+							<div className='px-4 py-8 sm:px-0'></div>
 						</div>
 					</main>
 				</div>

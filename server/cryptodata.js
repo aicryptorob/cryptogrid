@@ -1,32 +1,24 @@
 const { RESTDataSource } = require("apollo-datasource-rest");
-const APIKEY = process.env.COIN_API;
-
 const axios = require("axios");
+// https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC&tsyms=USD,EUR
+const getBtcData = async () => {
+	axios
+		.get(
+			"https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,USDT,BNB,USDC,XRP,ADA,SOL,LUNA,AVAX,DOT,DOGE,BUSD,UST,SHIB,MATIC,ALGO&tsyms=USD,EUR&api_key={41f6d207abc7fcbc458828245417bbbe5f5a15f13160a2323ad881bc27902fcb}"
+		)
 
-let response = null;
-new Promise(async (resolve, reject) => {
-	try {
-		response = await axios.get(
-			"https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest",
-			{
-				headers: {
-					"X-CMC_PRO_API_KEY": "fa5c04fc-d8a5-4328-8992-31de0d7ae806",
-				},
-			}
-		);
-	} catch (ex) {
-		response = null;
-		// error
-		console.log(ex);
-		reject(ex);
-	}
-	if (response) {
-		// success
-		const json = response.data;
-		console.log(json);
-		resolve(json);
-	}
-});
+		.then((response) => {
+			console.log(response.data.RAW);
+		})
+		.then((data) => {
+			// console.log(data.Raw.BTC);
+			// document.getElementById("info").innerHTML = '<b>1 BTC = ' + data.USD + ' USD</b>'
+		});
+};
+
+const cryptoData = getBtcData();
+
+// https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD
 
 // class CRYPTOAPI extends RESTDataSource {
 // 	constructor() {
