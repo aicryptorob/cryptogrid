@@ -1,221 +1,53 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
-
-const user = {
-	name: "Tom Cook",
-	email: "tom@example.com",
-	imageUrl: "",
-};
 const navigation = [
-	{ name: "Cryptos", href: "#", current: true },
-	{ name: "The Project", href: "#", current: false },
-	// { name: "Projects", href: "#", current: false },
-	// { name: "Calendar", href: "#", current: false },
+	{ name: "Crypto Prices", href: "#" },
+	{ name: "News", href: "#" },
+	{ name: "NFT", href: "#" },
+	{ name: "Learn", href: "#" },
 ];
-const userNavigation = [
-	{ name: "Your Profile", href: "#" },
-	{ name: "Settings", href: "#" },
-	{ name: "Sign out", href: "#" },
-];
-
-function classNames(...classes) {
-	return classes.filter(Boolean).join(" ");
-}
 
 export default function Header() {
 	return (
-		<>
-			{/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full">
-        <body class="h-full">
-        ```
-      */}
-			<div className='min-h-full bg-stone-800'>
-				<Disclosure as='nav' className='bg-white border-b border-gray-200'>
-					{({ open }) => (
-						<>
-							<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-								<div className='flex justify-between h-16'>
-									<div className='flex'>
-										<div className='flex-shrink-0 flex items-center'>
-											<img
-												className='block lg:hidden h-8 w-auto'
-												src='https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg'
-												alt='Workflow'
-											/>
-											<img
-												className='hidden lg:block h-8 w-auto'
-												src='https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg'
-												alt='Workflow'
-											/>
-										</div>
-										<div className='hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8'>
-											{navigation.map((item) => (
-												<a
-													key={item.name}
-													href={item.href}
-													className={classNames(
-														item.current
-															? "border-indigo-500 text-gray-900"
-															: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
-														"inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-													)}
-													aria-current={item.current ? "page" : undefined}>
-													{item.name}
-												</a>
-											))}
-										</div>
-									</div>
-									<div className='hidden sm:ml-6 sm:flex sm:items-center'>
-										<button
-											type='button'
-											className='bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>
-											<span className='sr-only'>View notifications</span>
-											<BellIcon className='h-6 w-6' aria-hidden='true' />
-										</button>
-
-										{/* Profile dropdown */}
-										<Menu as='div' className='ml-3 relative'>
-											<div>
-												<Menu.Button className='max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>
-													<span className='sr-only'>Open user menu</span>
-													{/* <img
-														className='h-8 w-8 rounded-full'
-														src={user.imageUrl}
-														alt=''
-													/> */}
-												</Menu.Button>
-											</div>
-											<Transition
-												as={Fragment}
-												enter='transition ease-out duration-200'
-												enterFrom='transform opacity-0 scale-95'
-												enterTo='transform opacity-100 scale-100'
-												leave='transition ease-in duration-75'
-												leaveFrom='transform opacity-100 scale-100'
-												leaveTo='transform opacity-0 scale-95'>
-												<Menu.Items className='origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none'>
-													{userNavigation.map((item) => (
-														<Menu.Item key={item.name}>
-															{({ active }) => (
-																<a
-																	href={item.href}
-																	className={classNames(
-																		active ? "bg-gray-100" : "",
-																		"block px-4 py-2 text-sm text-gray-700"
-																	)}>
-																	{item.name}
-																</a>
-															)}
-														</Menu.Item>
-													))}
-												</Menu.Items>
-											</Transition>
-										</Menu>
-									</div>
-									<div className='-mr-2 flex items-center sm:hidden'>
-										{/* Mobile menu button */}
-										<Disclosure.Button className='bg-white inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>
-											<span className='sr-only'>Open main menu</span>
-											{open ? (
-												<XIcon className='block h-6 w-6' aria-hidden='true' />
-											) : (
-												<MenuIcon
-													className='block h-6 w-6'
-													aria-hidden='true'
-												/>
-											)}
-										</Disclosure.Button>
-									</div>
-								</div>
-							</div>
-
-							<Disclosure.Panel className='sm:hidden'>
-								<div className='pt-2 pb-3 space-y-1'>
-									{navigation.map((item) => (
-										<Disclosure.Button
-											key={item.name}
-											as='a'
-											href={item.href}
-											className={classNames(
-												item.current
-													? "bg-indigo-50 border-indigo-500 text-indigo-700"
-													: "border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800",
-												"block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
-											)}
-											aria-current={item.current ? "page" : undefined}>
-											{item.name}
-										</Disclosure.Button>
-									))}
-								</div>
-								<div className='pt-4 pb-3 border-t border-gray-200'>
-									<div className='flex items-center px-4'>
-										<div className='flex-shrink-0'>
-											{/* <img
-												className='h-10 w-10 rounded-full'
-												src={user.imageUrl}
-												alt=''
-											/> */}
-										</div>
-										<div className='ml-3'>
-											<div className='text-base font-medium text-gray-800'>
-												{user.name}
-											</div>
-											<div className='text-sm font-medium text-gray-500'>
-												{user.email}
-											</div>
-										</div>
-										<button
-											type='button'
-											className='ml-auto bg-white flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'></button>
-									</div>
-									<div className='mt-3 space-y-1'>
-										{userNavigation.map((item) => (
-											<Disclosure.Button
-												key={item.name}
-												as='a'
-												href={item.href}
-												className='block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100'>
-												{item.name}
-											</Disclosure.Button>
-										))}
-									</div>
-								</div>
-							</Disclosure.Panel>
-						</>
-					)}
-				</Disclosure>
-
-				<div className='py-10'>
-					<header>
-						<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-							<div className='flex'>
-								<h1 className='text-3xl font-bold leading-tight text-gray-50'>
-									Search Lastest Crypto Prices
-								</h1>
-								<div className=' '>
-									<form>
-										<input
-											className='text-center text-gray-200 bg-slate-600 w-62 h-12 ml-10 cursor-pointer'
-											placeholder='search crypto by symbol'
-										/>
-									</form>
-								</div>
-							</div>
+		<header className='bg-indigo-600'>
+			<nav className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8' aria-label='Top'>
+				<div className='w-full py-6 flex items-center justify-between border-b border-indigo-500 lg:border-none'>
+					<div className='flex items-center text-white text-3xl font-bold'>
+						<a href='#'>CryptoCraze</a>
+						<div className='hidden ml-10 space-x-8 lg:block'>
+							{navigation.map((link) => (
+								<a
+									key={link.name}
+									href={link.href}
+									className='text-base font-medium text-white hover:text-indigo-50'>
+									{link.name}
+								</a>
+							))}
 						</div>
-					</header>
-					<main>
-						<div className='max-w-7xl mx-auto sm:px-6 lg:px-8'>
-							<div className='px-4 py-8 sm:px-0'></div>
-						</div>
-					</main>
+					</div>
+					<div className='ml-10 space-x-4'>
+						<a
+							href='#'
+							className='inline-block bg-indigo-500 py-2 px-4 border border-transparent rounded-md text-base font-medium text-white hover:bg-opacity-75'>
+							Login
+						</a>
+						<a
+							href='#'
+							className='inline-block bg-white py-2 px-4 border border-transparent rounded-md text-base font-medium text-indigo-600 hover:bg-indigo-50'>
+							Create Account
+						</a>
+					</div>
 				</div>
-			</div>
-		</>
+				<div className='py-4 flex flex-wrap justify-center space-x-6 lg:hidden'>
+					{navigation.map((link) => (
+						<a
+							key={link.name}
+							href={link.href}
+							className='text-base font-medium text-white hover:text-indigo-50'>
+							{link.name}
+						</a>
+					))}
+				</div>
+			</nav>
+		</header>
 	);
 }
