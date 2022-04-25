@@ -1,15 +1,15 @@
-import Head from "next/head";
-import GridTable from "../components/GridTable";
-
+import React from "react";
+import { Card } from "../components/Card";
+import { Dashboard } from "../components/Dashboard";
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 
-const Index = () => {
+export default function index() {
 	return (
-		<>
+		<div>
 			<Header />
-			<GridTable />
-		</>
+			<Dashboard />
+			<Footer />
+		</div>
 	);
-};
-
-export default Index;
+}
